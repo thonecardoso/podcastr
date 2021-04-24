@@ -7,6 +7,8 @@ import {api} from "../services/api";
 import {convertDurationToTimeString} from "../utils/convertDurationToTimeString";
 
 import styles from './home.module.scss'
+import {useContext} from "react";
+import {PlayerContext} from "../contexts/playerContext";
 
 type Episode = {
     id: string;
@@ -25,6 +27,8 @@ type HomeProps = {
 }
 
 export default function Home({allEpisodes, latestEpisodes}: HomeProps) {
+    const {play} = useContext(PlayerContext);
+
     return (
         <div className={styles.homepage}>
             <section className={styles.latestEpisodes}>
@@ -44,14 +48,14 @@ export default function Home({allEpisodes, latestEpisodes}: HomeProps) {
 
                                 <div className={styles.episodeDetails}>
                                     <Link href={`/episodes/${episode.id}`}>
-                                        <a >{episode.title}</a>
+                                        <a>{episode.title}</a>
                                     </Link>
                                     <p>{episode.members}</p>
                                     <span>{episode.publishedAt}</span>
                                     <span>{episode.durationAsString}</span>
                                 </div>
 
-                                <button type="button">
+                                <button type="button" onClick={() => play(episode)}>
                                     <img src="/play-green.svg" alt="Tocar episódio"/>
                                 </button>
                             </li>
@@ -86,7 +90,7 @@ export default function Home({allEpisodes, latestEpisodes}: HomeProps) {
                                 </td>
                                 <td>
                                     <Link href={`/episodes/${episode.id}`}>
-                                        <a >{episode.title}</a>
+                                        <a>{episode.title}</a>
                                     </Link>
                                 </td>
                                 <td>{episode.members}</td>

@@ -1,4 +1,3 @@
-import {useRouter} from "next/router";
 import {GetStaticPaths, GetStaticProps} from "next";
 import {api} from "../../services/api";
 import {format, parseISO} from "date-fns";
@@ -26,7 +25,7 @@ type EpisodeProps = {
 };
 
 export default function Episode({episode}: EpisodeProps) {
-    const router = useRouter()
+
     return (
         <div className={styles.episode}>
             <div className={styles.thumbnailContainer}>
@@ -63,7 +62,13 @@ export default function Episode({episode}: EpisodeProps) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
     return {
-        paths: [],
+        paths: [
+            {
+                params: {
+                    slug: 'comunidades-e-tecnologia'
+                }
+            }
+        ],
         fallback: 'blocking'
     }
 }

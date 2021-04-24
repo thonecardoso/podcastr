@@ -25,9 +25,31 @@
   footer {
     align-self: stretch;
 
-    &.empty{
+    &.empty {
       opacity: .5;
     }
+  }
+}
+
+.currentEpisode {
+  text-align: center;
+
+  img {
+    border-radius: 1.5rem;
+  }
+
+  strong {
+    display: block;
+    margin-top: 2rem;
+    font: 600 1.25rem Lexend, sans-serif;
+    line-height: 1.75rem;
+  }
+
+  spam {
+    display: block;
+    margin-top: 1rem;
+    opacity: .6;
+    line-height: 1.5rem;
   }
 }
 
@@ -79,17 +101,32 @@
   margin-top: 2.5rem;
   gap: 1.5rem;
 
-  button{
+  button {
     background: transparent;
     border: 0;
     font-size: 0;
+    transition: .2s;
 
-    &.playButton{
+    &:disabled {
+      cursor: default;
+    }
+
+    &:hover:not(:disabled){
+      filter: brightness(.7);
+    }
+
+    &.playButton {
       width: 4rem;
       height: 4rem;
       border-radius: 1rem;
       background: var(--purple-400);
+
+      &:hover:not(:disabled){
+        filter: brightness(.95);
+      }
     }
+
+
   }
 }
 

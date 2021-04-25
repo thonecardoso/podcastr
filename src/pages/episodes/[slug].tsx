@@ -73,7 +73,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         paths: [
             {
                 params: {
-                    slug: 'comunidades-e-tecnologia'
+                    slug: 'estrategias-de-autenticacao-jwt-oauth'
                 }
             }
         ],
